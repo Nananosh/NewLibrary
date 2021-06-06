@@ -1,0 +1,84 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="slider_area">
+    <div class="single_slider  d-flex align-items-center slider_bg_1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 col-md-6">
+                    <div class="slider_text">
+                        <h5 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">@ViewBag.AllTovars.Count+ Книг на сайте</h5>
+                        <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">Найдете то что искали</h3>
+                        <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">Зарегистрируйтесь чтобы взять книгу</p>
+                        <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
+                            <a asp-area="" asp-controller="Account" asp-action="Register" class="boxed-btn3">Зарегистрироваться</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s" data-wow-delay=".2s">
+        <img src="img/banner/illustration.png" alt="">
+    </div>
+</div>
+
+<div class="job_listing_area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section_title">
+                    <h3>Последние добавления</h3>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="brouse_job text-right">
+                    <a href="/Catalog/AllCatalog" class="boxed-btn4">Больше</a>
+                </div>
+            </div>
+        </div>
+        <div class="job_lists">
+            <div class="row">
+                @foreach (var item in ViewBag.AllTovars)
+                {
+                    if (ViewBag.It < 5)
+                    {
+                        <div class="col-lg-12 col-md-12">
+                            <div class="single_jobs white-bg d-flex justify-content-between">
+                                <div class="jobs_left d-flex align-items-center">
+                                    <div class="thumb" style="display: table;">
+                                        <img height="80" width="auto" href="/Catalog/More/@item.Id" src=@item.BookImage alt="">
+                                    </div>
+                                    <div class="jobs_conetent">
+                                        <a href="/Catalog/More/@item.Id"><h4>@item.BookName</h4></a>
+                                        <div class="links_locat d-flex align-items-center">
+                                            <div class="location">
+                                                <p> <i class="fa fa-map-marker"></i>@item.PlacePublication</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa fa-clock-o"></i>@item.YearPubl</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jobs_right">
+                                    <div class="apply_now">
+                                        <a href="/Catalog/More/@item.Id" class="boxed-btn3">Подробнее</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        ViewBag.It += 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

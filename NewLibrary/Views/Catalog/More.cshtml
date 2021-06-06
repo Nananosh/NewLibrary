@@ -1,0 +1,97 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>@ViewBag.Obj.BookName</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="job_details_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="job_details_header">
+                    <div class="single_jobs white-bg d-flex justify-content-between">
+                        <div class="jobs_left d-flex align-items-center">
+                            <div class="thumb" style="display: table;">
+                                <img height="80" width="auto" src=@ViewBag.Obj.BookImage alt="">
+                            </div>
+                            <div class="jobs_conetent">
+                                <a><h4>@ViewBag.Obj.BookName</h4></a>
+                                <div class="links_locat d-flex align-items-center">
+                                    <div class="location">
+                                        <p> <i class="fa fa-map-marker"></i> @ViewBag.Obj.PlacePublication</p>
+                                    </div>
+                                    <div class="location">
+                                        <p> <i class="fa fa-clock-o"></i> @ViewBag.Obj.YearPubl</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jobs_right">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="descript_wrap white-bg">
+                       
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (ViewBag.State == 0)
+                        {
+                            <form method="post" asp-action="More" asp-controller="Catalog">
+
+                                <input type="hidden" value="@User.Claims.ElementAt(0).Value" name="Id" />
+                                <input type="hidden" value="@ViewBag.Obj.Id" name="t" />
+                                <div class="col-md-12">
+                                    <div class="submit_btn">
+                                        <button class="boxed-btn3 w-100" type="submit">Взять</button>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    }
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="job_sumary">
+                    <div class="summery_header">
+                        <h3>Информация</h3>
+                    </div>
+                    <div class="job_content">
+                        <ul>
+                            <li>Издатель: <span>@ViewBag.Obj.PublisherName</span></li>
+                            <li>Автор: <span>@ViewBag.Obj.AuthorName</span></li>
+                            <li>Место издания: <span>@ViewBag.Obj.PlacePublication</span></li>
+                            <li>Количество страниц: <span>@ViewBag.Obj.BookPages</span></li>
+                            <li>
+                                Занятость: <span>
+                                    @if (ViewBag.State == 0)
+                                    {
+                                        <font color="green" size="3">Cвободна</font>
+                                    }
+                                    else
+                                    {
+                                        <font color="red" size="3">Занято</font>
+                                    }
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

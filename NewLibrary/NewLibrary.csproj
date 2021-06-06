@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Home\images\**" />
+    <Content Remove="Views\Home\images\**" />
+    <EmbeddedResource Remove="Views\Home\images\**" />
+    <None Remove="Views\Home\images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="NDbUnit.SqlLite" Version="1.6.8" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.114" />
+  </ItemGroup>
+
+</Project>

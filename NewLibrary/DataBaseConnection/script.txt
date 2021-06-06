@@ -1,0 +1,40 @@
+create table profile
+(
+id integer not null primary key autoincrement ,
+nickname text unique,
+password text not null
+);
+
+create table book
+(
+id integer not null primary key autoincrement,
+name text not null,
+author text,
+nubmer_pages integer
+);
+
+create table publishing_house
+(
+id integer,
+name integer
+);
+
+create table publication
+(
+id integer,
+id_book integer,
+id_publishing_house integer,
+year_publication integer,
+foreign key(id_book) references book(id),
+foreign key(id_publishing_house) references publishing_house(id)
+);
+
+create table book_rental
+(
+id_profile integer,
+id_publication integer,
+book_rental integer,
+return_date text,
+foreign key(id_profile) references profile(id),
+foreign key(id_publication) references publication(id)
+);
